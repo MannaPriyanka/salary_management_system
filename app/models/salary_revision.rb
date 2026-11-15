@@ -5,6 +5,10 @@ class SalaryRevision < ApplicationRecord
   belongs_to :currency, primary_key: :code, foreign_key: :currency_code, inverse_of: false
   has_many :revision_components
 
+  after_create do
+    AuditRecorder.created(self, extra_new_values: { "components" => component_values })
+  end
+
   validates :base_amount, presence: true, numericality: { greater_than: 0 }
   validates :effective_date, presence: true, uniqueness: { scope: :employee_id }
   validate :currency_is_enabled
@@ -16,6 +20,12 @@ class SalaryRevision < ApplicationRecord
   end
 
   private
+
+  def component_values
+    revision_components.map do |component|
+      { "type" => component.component_type, "amount" => component.amount.to_s("F"), "currency" => component.currency_code }
+    end
+  end
 
   def currency_is_enabled
     return if currency.nil? || currency.enabled?

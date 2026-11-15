@@ -17,17 +17,31 @@ class ApplicationController < ActionController::API
     return @current_user if defined?(@current_user)
 
     @current_user = session[:user_id] ? User.find_by(id: session[:user_id]) : nil
+    Current.user = @current_user
+    @current_user
   end
 
   def sign_in(user)
     reset_session
     session[:user_id] = user.id
     @current_user = user
+    Current.user = user
   end
 
   def sign_out
     reset_session
     @current_user = nil
+    Current.user = nil
+  end
+
+  class InvalidAmount < StandardError; end
+
+  def parse_amount(value)
+    raise InvalidAmount, "must be a decimal string" unless value.is_a?(String)
+
+    BigDecimal(value)
+  rescue ArgumentError
+    raise InvalidAmount, "must be a decimal string"
   end
 
   def render_error(status, code, message, details = [])
