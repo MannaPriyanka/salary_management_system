@@ -63,6 +63,6 @@ class Employee < ApplicationRecord
     return unless will_save_change_to_joining_date? && joining_date.present?
     return unless salary_revisions.where(effective_date: ...joining_date).exists?
 
-    errors.add(:joining_date, "is after an existing salary revision; correct the revisions first")
+    errors.add(:joining_date, :conflicts_with_revision, message: "is after an existing salary revision; correct the revisions first")
   end
 end

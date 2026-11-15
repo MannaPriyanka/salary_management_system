@@ -68,7 +68,7 @@ module Api
         if employee.errors.of_kind?(:employee_code, :taken) || employee.errors.of_kind?(:work_email, :taken)
           return render_duplicate(employee)
         end
-        if employee.errors.include?(:joining_date)
+        if employee.errors.of_kind?(:joining_date, :conflicts_with_revision)
           return render_joining_date_conflict(employee)
         end
 
