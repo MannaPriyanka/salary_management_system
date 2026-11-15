@@ -7,6 +7,7 @@ import { EmployeeFormPage } from "./pages/EmployeeFormPage";
 import { EmployeesPage } from "./pages/EmployeesPage";
 import { HomePage } from "./pages/HomePage";
 import { SignInPage } from "./pages/SignInPage";
+import { StatisticsPage } from "./pages/StatisticsPage";
 
 export const router = createBrowserRouter([
   { path: "/sign-in", element: <SignInPage /> },
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
       { path: "employees/new", element: <EmployeeFormPage /> },
       { path: "employees/:id", element: <EmployeeDetailPage /> },
       { path: "employees/:id/edit", element: <EmployeeFormPage /> },
-      { path: "statistics", element: <HomePage /> },
+      { path: "statistics", element: <StatisticsPage /> },
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },
