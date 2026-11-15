@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       get "countries", to: "reference_data#countries"
       get "currencies", to: "reference_data#currencies"
 
+      get "statistics/summary", to: "statistics#summary"
+      get "statistics/breakdown", to: "statistics#breakdown"
+
       get "health", to: "health#show"
     end
   end
