@@ -1,0 +1,13 @@
+{
+  "name": "salary-management-e2e",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Browser walkthrough of every feature, with a pass/fail summary and a recorded video",
+  "scripts": {
+    "demo": "node run-demo.js",
+    "demo:fast": "SLOW_MO=0 PAUSE_MS=0 node run-demo.js"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
