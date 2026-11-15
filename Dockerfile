@@ -27,6 +27,16 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development" \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so"
 
+# Build the React web app. Vite writes its output to /public (outDir "../public"),
+# which the final stage copies into the Rails image.
+FROM docker.io/library/node:24-slim AS frontend
+
+WORKDIR /frontend
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build
+
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
@@ -46,6 +56,9 @@ RUN bundle install && \
 
 # Copy application code
 COPY . .
+
+# Built web app (index.html and assets) from the frontend stage
+COPY --from=frontend /public/ /rails/public/
 
 # Precompile bootsnap code for faster boot times.
 # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495
