@@ -23,7 +23,7 @@ export class ApiError extends Error {
   }
 }
 
-export type Json = Record<string, unknown> | unknown[];
+export type Json = object;
 
 export async function apiRequest<T>(
   path: string,
