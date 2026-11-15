@@ -282,6 +282,10 @@ bin/rails server                         # API on :3000
 
 | Variable | Used by | Required | Purpose |
 |---|---|---|---|
+| `DATABASE_HOST` | `config/database.yml` (all environments) | No (unset = Unix socket) | Database host, for example `localhost` |
+| `DATABASE_PORT` | `config/database.yml` | No (default 5432) | Database port |
+| `DATABASE_USERNAME` | `config/database.yml` | No (unset = operating system user) | Development and test database user |
+| `DATABASE_PASSWORD` | `config/database.yml` | No (unset = no password) | Development and test database password |
 | `DATABASE_URL` | Rails (production) | Yes in production, unless the variables below are set | Full PostgreSQL connection URL. Merged over `config/database.yml`. |
 | `SALARY_APP_DATABASE_USER` | `config/database.yml` | No (default `salary_app`) | Production database user |
 | `SALARY_APP_DATABASE_PASSWORD` | `config/database.yml` | Yes in production when `DATABASE_URL` is not set | Production database password |
