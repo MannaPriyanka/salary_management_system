@@ -1,0 +1,36 @@
+# Secrets and local environment
+/.env
+/.env.*
+!/.env.example
+/config/master.key
+/config/*.key
+/config/credentials/*.key
+
+# Logs and temporary files
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+
+# Local storage and build output
+/storage/*
+!/storage/.keep
+/public/assets
+/public/packs
+/public/vite*
+/coverage/
+/node_modules/
+
+# Tests and tooling
+/spec/examples.txt
+/.rspec_status
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Bundler
+/vendor/bundle
+/.bundle
