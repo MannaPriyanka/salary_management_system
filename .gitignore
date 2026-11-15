@@ -34,3 +34,6 @@
 # Bundler
 /vendor/bundle
 /.bundle
+
+# Frontend build output (written into Rails public/ by vite build)
+/public/index.html
