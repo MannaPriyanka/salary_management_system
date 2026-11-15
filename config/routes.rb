@@ -25,4 +25,8 @@ Rails.application.routes.draw do
       get "health", to: "health#show"
     end
   end
+
+  match "api/*unmatched", to: "errors#api_not_found", via: :all
+  root to: "spa#index"
+  get "*path", to: "spa#index", constraints: ->(request) { !request.path.start_with?("/api/") }
 end
