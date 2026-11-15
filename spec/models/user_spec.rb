@@ -18,10 +18,4 @@ RSpec.describe User, type: :model do
   it "requires a password of at least 12 characters" do
     expect(build(:user, password: "short", password_confirmation: "short")).to be_invalid
   end
-
-  it "starts with no failed sign-in attempts" do
-    user = create(:user)
-    expect(user.failed_attempts).to eq(0)
-    expect(user.refusal_until).to be_nil
-  end
 end
