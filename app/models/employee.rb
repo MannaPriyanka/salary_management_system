@@ -8,6 +8,9 @@ class Employee < ApplicationRecord
 
   normalizes :work_email, with: ->(email) { email.strip.downcase }
 
+  after_create { AuditRecorder.created(self) }
+  after_update { AuditRecorder.updated(self) if saved_changes.any? }
+
   validates :employee_code, presence: true, uniqueness: true
   validates :full_name, presence: true, length: { maximum: 200 }
   validates :work_email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
           post :archive
           post :unarchive
         end
+        resources :salary_revisions, only: %i[index create]
+        resources :audit_entries, only: :index
       end
 
       get "departments", to: "reference_data#departments"
