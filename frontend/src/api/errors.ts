@@ -3,6 +3,9 @@ import { ApiError } from "./client";
 // Turns any error from the API layer into a sentence a person can act on.
 export function errorMessage(error: unknown): string {
   if (error instanceof ApiError) {
+    // Field errors are shown under their fields, so the summary stays general.
+    const hasFieldErrors = error.details.some((item) => typeof item.field === "string");
+    if (hasFieldErrors) return error.message;
     const detail = error.details.find((item) => typeof item.message === "string")?.message;
     return detail ? `${error.message} ${detail}` : error.message;
   }

@@ -303,7 +303,7 @@ Secrets belong in the environment or the platform's secret store. Never commit t
 ## Tests and quality checks
 
 ```sh
-bundle exec rspec                        # backend: 155 examples (models, queries, services, requests)
+bundle exec rspec                        # backend: 156 examples (models, queries, services, requests)
 bundle exec rubocop                      # style
 bundle exec brakeman -q --no-pager       # static security analysis
 bundle exec bundler-audit check          # known gem vulnerabilities

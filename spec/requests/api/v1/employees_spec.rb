@@ -62,6 +62,14 @@ RSpec.describe "Employees API", type: :request do
       expect(response).to have_http_status(:conflict)
     end
 
+    it "reports a missing joining date as a validation error, not as a revision conflict" do
+      post "/api/v1/employees", params: employee_params(joining_date: nil), as: :json
+
+      expect(response).to have_http_status(:unprocessable_content)
+      expect(response.parsed_body.dig("error", "details").map { |d| d["field"] }).to include("joining_date")
+      expect(response.parsed_body.dig("error", "message")).not_to match(/conflicts with existing salary revisions/)
+    end
+
     it "returns 422 with field details for invalid input" do
       post "/api/v1/employees", params: employee_params(full_name: ""), as: :json
       expect(response).to have_http_status(:unprocessable_content)
