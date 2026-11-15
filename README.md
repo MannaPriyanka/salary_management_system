@@ -19,8 +19,6 @@ This project is a web-based salary management system for ACME's HR team. Today, 
 - [Deployment](#deployment)
 - [Security](#security)
 - [Business rules](#business-rules)
-- [Known limitations and roadmap](#known-limitations-and-roadmap)
-- [Documentation](#documentation)
 
 ## Features
 
@@ -407,16 +405,3 @@ Full design: [`docs/architecture/security-design.md`](docs/architecture/security
 - Currency conversion, additional currencies
 - Retention policies, once the applicable country laws are confirmed. **No legal or regulatory compliance is claimed.**
 - Payroll integration, employee self-service, approval workflow, multi-tenancy
-
-## Documentation
-
-| Document | Contents |
-|---|---|
-| [`docs/product/requirements.md`](docs/product/requirements.md) | One-page requirements summary |
-| [`docs/product/specification.md`](docs/product/specification.md) | Detailed MVP specification and acceptance criteria |
-| [`docs/product/roadmap.md`](docs/product/roadmap.md) | Deferred features and what the MVP leaves room for |
-| [`docs/product/traceability-matrix.md`](docs/product/traceability-matrix.md) | Assessment requirements mapped to features and tests |
-| [`docs/decisions/decision-register.md`](docs/decisions/decision-register.md) | Product and engineering decisions |
-| [`docs/architecture/`](docs/architecture/) | System overview, API design, database design, security design, ADRs |
-| [`docs/development/testing-strategy.md`](docs/development/testing-strategy.md) | Test levels and conventions |
-| [`docs/performance/performance-targets.md`](docs/performance/performance-targets.md) | Performance targets and measurement plan |
